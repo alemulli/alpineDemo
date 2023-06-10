@@ -14,19 +14,19 @@ There is a lot more that you can potentially do with Alpine.js and I recommend c
 
 To include the following scripts in your `<head>` element.
 
- `
+ ```
  <script src="https://cdn.tailwindcss.com"></script>
- `
+ ```
  If you intend to use Tailwind CSS to style your document.
 
-`
+```
 <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
-`
+```
 If you intend to use the persist plugin to have state stored in local storage between refreshes.
 
-`
+```
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-`
+```
 If you intend to use Alpine.js at all. 
 
 # Definition Zone:
