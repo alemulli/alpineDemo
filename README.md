@@ -10,6 +10,10 @@ It demos the use of Alpines x-data, x-show, x-on, x-text, x-for, and x-transitio
 
 There is a lot more that you can potentially do with Alpine.js and I recommend checking it out. With what I've shown you alone, I think its great for small apps or for within components that have state that's not needed across your entire site and can result in very clean consise code. Something I haven't explored yet is building larger componentized apps using Alpine.js by storing global state using their Alpine.store()API and @store Magics.
 
+# Video Demo
+
+[![Link to Youtube Demonstration](http://img.youtube.com/vi/uHIzYthzavM/0.jpg)](http://www.youtube.com/watch?v=uHIzYthzavM "Alpine.js Demo")
+
 # Don't Forget!
 
 To include the following scripts in your `<head>` element.
