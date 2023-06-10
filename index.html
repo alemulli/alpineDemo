@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" class="w-screen">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script>
+      function data() {
+        return {
+          async pushEntry(array) {
+            array.push({
+              title: document.getElementById("formTitle").value,
+              date: document.getElementById("formDate").value,
+              body: document.getElementById("formBody").value,
+            });
+            console.log(array);
+            document.getElementById("formTitle").value = "";
+            document.getElementById("formDate").value = "";
+            document.getElementById("formBody").value = "";
+          },
+        };
+      }
+    </script>
+  </head>
+  <body class="font-serif w-11/12 m-auto my-4 flex flex-col gap-4">
+    <h1 class="text-2xl font-bold text-center">My Journal</h1>
+    <main
+      class="flex flex-col gap-4"
+      x-data="{ journalPosts: $persist([])}"
+      x-directives="{persist: $persist}"
+    >
+      <div class="flex flex-col gap-4">
+        <template x-for="(entry, index) in journalPosts" :key="'Journal'-index">
+          <div
+            x-data="{open: false}"
+            class="rounded-xl odd:bg-indigo-300 even:bg-blue-300 p-8 flex flex-col gap-4"
+          >
+            <h3 class="text-xl font-bold" x-text="entry.title"></h3>
+            <h5 class="text-base font-bold" x-text="entry.date"></h5>
+            <p class="cursor-pointer" x-on:click="open = !open">Read more...</p>
+            <p
+              class="text-base"
+              x-show="open"
+              x-transition
+              x-text="entry.body"
+            ></p>
+          </div>
+        </template>
+      </div>
+      <div
+        x-data="data()"
+        class="flex flex-col gap-4 bg-green-200 p-8 rounded-xl"
+      >
+        <label for="title">Title:</label>
+        <input
+          id="formTitle"
+          class="rounded-xl border-2 border-black p-4"
+          type="text"
+          name="title"
+          required
+        />
+        <label for="date">Date:</label>
+        <input
+          id="formDate"
+          class="rounded-xl border-2 border-black p-4"
+          type="text"
+          name="date"
+          required
+        />
+        <label for="body">Body:</label>
+        <textarea
+          id="formBody"
+          class="rounded-xl border-2 border-black p-4"
+          rows="3"
+          name="body"
+          required
+        ></textarea>
+        <button
+          class="border-black border-2 rounded-xl w-max p-4 m-auto"
+          x-on:click="await pushEntry(journalPosts)"
+        >
+          Add Your Journal Entry
+        </button>
+      </div>
+    </main>
+  </body>
+</html>
